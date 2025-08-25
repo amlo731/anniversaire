@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zen Attitude 59 - 2 Ans de Bien-être</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ffd6e8, #ffe4b3, #f0d4ff, #d4edff);
+            background-size: 400% 400%;
+            animation: gradient-bg 15s ease infinite;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        @keyframes gradient-bg {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .header {
+            background: linear-gradient(to right, #d4af37, #ffd700);
+            color: white;
+            padding: 20px;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 2.2em;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 25px;
+            background-color: rgba(255, 255, 255, 0.85);
+            border-radius: 20px;
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1), 0 0 0 10px rgba(255, 255, 255, 0.2);
+            border: 3px dashed rgba(212, 175, 55, 0.3);
+        }
+
+        h2 {
+            color: #d4af37;
+            text-align: center;
+            font-size: 1.8em;
+            margin-bottom: 30px;
+        }
+
+        .intro-text {
+            text-align: center;
+            color: #555;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+            line-height: 1.6;
+            padding: 0 20px;
+        }
+
+        .candles-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .candle-container {
+            position: relative;
+            width: 80px;
+            height: 160px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            margin-bottom: 30px;
+            transition: transform 0.3s ease;
+        }
+
+        .candle-container:hover {
+            transform: scale(1.05);
+        }
+
+        .candle {
+            width: 25px;
+            height: 120px;
+            border-radius: 3px;
+            position: absolute;
+            bottom: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .candle-container:nth-child(1) .candle {
+            background: linear-gradient(to bottom, #ff6b9d, #ff8fab);
+        }
+
+        .candle-container:nth-child(2) .candle {
+            background: linear-gradient(to bottom, #9b59b6, #8e44ad);
+        }
+
+        .candle-container:nth-child(3) .candle {
+            background: linear-gradient(to bottom, #3498db, #2980b9);
+        }
+
+        .candle-container:nth-child(4) .candle {
+            background: linear-gradient(to bottom, #f39c12, #e67e22);
+        }
+
+        .wick {
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 8px;
+            background: #2c3e50;
+            border-radius: 1px;
+        }
+
+        .smoke {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 15px;
+            background: rgba(150, 150, 150, 0.6);
+            border-radius: 50%;
+            opacity: 0.7;
+            animation: smoke-rise 2s ease-in-out infinite;
+        }
+
+        @keyframes smoke-rise {
+            0% { opacity: 0.7; transform: translateX(-50%) translateY(0px) scale(1); }
+            100% { opacity: 0; transform: translateX(-50%) translateY(-20px) scale(1.5); }
+        }
+
+        .flame {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 12px;
+            height: 18px;
+            background: radial-gradient(circle, #ffd700 30%, #ff6b35 70%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            animation: flame-flicker 0.5s ease-in-out infinite alternate;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+        }
+
+        @keyframes flame-flicker {
+            0% { transform: translateX(-50%) scale(1) rotate(-1deg); }
+            100% { transform: translateX(-50%) scale(1.1) rotate(1deg); }
+        }
+
+        .letter {
+            position: absolute;
+            top: 30px;
+            font-size: 40px;
+            font-weight: bold;
+            text-shadow: 2px 2px 0 #fff, -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff;
+            opacity: 0;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            z-index: 5;
+        }
+
+        .candle-container:nth-child(1) .letter { color: #ff4081; }
+        .candle-container:nth-child(2) .letter { color: #9c27b0; }
+        .candle-container:nth-child(3) .letter { color: #2196f3; }
+        .candle-container:nth-child(4) .letter { color: #ff9800; }
+
+        .candle-label {
+            position: absolute;
+            bottom: -30px;
+            width: 100%;
+            text-align: center;
+            font-weight: bold;
+            color: #d4af37;
+            margin: 0;
+            font-size: 1.1em;
+        }
+
+        .lit .flame {
+            opacity: 1;
+        }
+
+        .lit .smoke {
+            display: none;
+        }
+
+        .lit .letter {
+            opacity: 1;
+            transform: scale(1.2);
+        }
+
+        .reminder {
+            background: linear-gradient(to right, #fff3cd, #ffeaa7);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: center;
+            font-size: 1.1em;
+            color: #333;
+            border-left: 5px solid #d4af37;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .instructions {
+            margin: 30px 0;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            border-left: 5px solid #d4af37;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .instructions-title {
+            margin-top: 0;
+            color: #d4af37;
+        }
+
+        .instructions-list {
+            padding-left: 20px;
+            line-height: 1.6;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #888;
+            font-size: 0.9em;
+        }
+
+        .message-box {
+            display: none;
+            padding: 20px;
+            background: linear-gradient(to right, #d4edda, #c3e6cb);
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            color: #333;
+            border: 2px solid #28a745;
+        }
+
+        .message-box h3 {
+            margin-top: 0;
+            color: #155724;
+        }
+
+        .anniversary-decoration {
+            position: absolute;
+            font-size: 2.5em;
+            opacity: 0.8;
+            z-index: -1;
+            filter: drop-shadow(0 3px 5px rgba(0,0,0,0.1));
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .decoration-1 { top: 10%; left: 5%; animation-delay: 0s; }
+        .decoration-2 { top: 15%; right: 7%; animation-delay: 1s; }
+        .decoration-3 { bottom: 20%; left: 8%; animation-delay: 2s; }
+        .decoration-4 { bottom: 25%; right: 6%; animation-delay: 3s; }
+        .decoration-5 { top: 40%; left: 12%; animation-delay: 1.5s; }
+        .decoration-6 { top: 60%; right: 10%; animation-delay: 2.5s; }
+
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(5deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #ffd700;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: particle-rise 3s ease-out forwards;
+        }
+
+        @keyframes particle-rise {
+            0% {
+                opacity: 1;
+                transform: translateY(0px);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100px);
+            }
+        }
+
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background-color: #f0f;
+            animation: confetti-fall linear forwards;
+            z-index: 1000;
+        }
+
+        @keyframes confetti-fall {
+            0% { transform: translateY(-100vh) rotate(0deg); }
+            100% { transform: translateY(100vh) rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Décorations flottantes d'anniversaire -->
+    <div class="anniversary-decoration decoration-1">🎂</div>
+    <div class="anniversary-decoration decoration-2">🎈</div>
+    <div class="anniversary-decoration decoration-3">🎁</div>
+    <div class="anniversary-decoration decoration-4">✨</div>
+    <div class="anniversary-decoration decoration-5">🌟</div>
+    <div class="anniversary-decoration decoration-6">💆‍♀️</div>
+
+    <div class="header">
+        <h1>Zen Attitude 59<br>✨ 2 Ans de Bien-être ✨</h1>
+    </div>
+
+    <div class="container">
+        <h2 class="floating">🕯️ Allumez une bougie d'anniversaire 🕯️</h2>
+        
+        <p class="intro-text">
+            Célébrez avec nous nos 2 années de détente ! Allumez une bougie virtuelle pour découvrir votre cadeau d'anniversaire exclusif et bénéficiez d'une remise sur votre prochain massage. Un moment de relaxation vous attend !
+        </p>
+        
+        <div class="candles-container">
+            <div class="candle-container" onclick="lightCandle(this)">
+                <div class="candle">
+                    <div class="wick"></div>
+                    <div class="smoke"></div>
+                    <div class="flame"></div>
+                </div>
+                <span class="letter">?</span>
+                <p class="candle-label">Bougie 1</p>
+            </div>
+            <div class="candle-container" onclick="lightCandle(this)">
+                <div class="candle">
+                    <div class="wick"></div>
+                    <div class="smoke"></div>
+                    <div class="flame"></div>
+                </div>
+                <span class="letter">?</span>
+                <p class="candle-label">Bougie 2</p>
+            </div>
+            <div class="candle-container" onclick="lightCandle(this)">
+                <div class="candle">
+                    <div class="wick"></div>
+                    <div class="smoke"></div>
+                    <div class="flame"></div>
+                </div>
+                <span class="letter">?</span>
+                <p class="candle-label">Bougie 3</p>
+            </div>
+            <div class="candle-container" onclick="lightCandle(this)">
+                <div class="candle">
+                    <div class="wick"></div>
+                    <div class="smoke"></div>
+                    <div class="flame"></div>
+                </div>
+                <span class="letter">?</span>
+                <p class="candle-label">Bougie 4</p>
+            </div>
+        </div>
+        
+        <div class="message-box" id="resultMessage">
+            <h3>Joyeux anniversaire à nous ! Vous avez découvert la lettre <span id="discoveredLetter">?</span></h3>
+            <p>Prenez une photo de cette page et présentez-la lors de votre prochaine visite chez Zen Attitude 59 pour bénéficier de votre remise anniversaire exclusive !</p>
+            <p>Cette offre est personnelle et ne peut être utilisée qu'une seule fois.</p>
+        </div>
+        
+        <div class="instructions">
+            <h3 class="instructions-title">Comment participer ?</h3>
+            <ol class="instructions-list">
+                <li>Choisissez une bougie et cliquez dessus pour l'allumer</li>
+                <li>Découvrez la lettre mystère qui apparaît dans la flamme</li>
+                <li>Prenez une capture d'écran ou une photo de votre résultat</li>
+                <li>Présentez cette capture lors de votre prochaine visite chez Zen Attitude 59</li>
+                <li>Bénéficiez de votre remise anniversaire surprise !</li>
+            </ol>
+        </div>
+        
+        <p class="reminder">🎉 Chaque lettre correspond à une remise mystère différente. Merci de nous accompagner dans cette belle aventure zen !</p>
+        
+        <div class="footer">
+            <p>Offre spéciale 2ème anniversaire valable jusqu'au 31 décembre 2025. Une seule remise par client.</p>
+        </div>
+    </div>
+
+    <script>
+        let gameOver = false;
+
+        // Vérifier si le jeu a déjà été joué
+        window.onload = function() {
+            if (localStorage.getItem('anniversaryGamePlayed')) {
+                const savedLetter = localStorage.getItem('discoveredLetter');
+                const savedIndex = localStorage.getItem('litCandleIndex') || 0;
+                const candles = document.querySelectorAll('.candle-container');
+                
+                const selectedCandle = candles[savedIndex];
+                selectedCandle.classList.add("lit");
+                selectedCandle.querySelector(".letter").textContent = savedLetter;
+                
+                candles.forEach((candle, index) => {
+                    if (index != savedIndex) {
+                        candle.style.opacity = '0.5';
+                        candle.style.cursor = 'not-allowed';
+                    }
+                });
+                
+                document.getElementById('discoveredLetter').textContent = savedLetter;
+                document.getElementById('resultMessage').style.display = 'block';
+                
+                gameOver = true;
+            }
+        };
+
+        function lightCandle(element) {
+            if (gameOver) return;
+            
+            element.classList.add("lit");
+            gameOver = true;
+            
+            // Probabilités pondérées : A=40%, B=40%, C=12%, D=8%
+            function getWeightedRandomLetter() {
+                const rand = Math.random() * 100;
+                
+                if (rand < 40) return "A";          // 40%
+                else if (rand < 80) return "B";     // 40% (40 + 40 = 80)
+                else if (rand < 92) return "C";     // 12% (80 + 12 = 92)
+                else return "D";                    // 8% (92 + 8 = 100)
+            }
+            
+            let randomLetter = getWeightedRandomLetter();
+            element.querySelector(".letter").textContent = randomLetter;
+            
+            // Créer des particules dorées
+            createParticles(element);
+            
+            // Sauvegarder dans localStorage
+            localStorage.setItem('anniversaryGamePlayed', 'true');
+            localStorage.setItem('discoveredLetter', randomLetter);
+            
+            const candles = document.querySelectorAll('.candle-container');
+            for (let i = 0; i < candles.length; i++) {
+                if (candles[i] === element) {
+                    localStorage.setItem('litCandleIndex', i);
+                    break;
+                }
+            }
+            
+            // Désactiver les autres bougies
+            const allCandles = document.querySelectorAll('.candle-container');
+            allCandles.forEach(candle => {
+                if (candle !== element) {
+                    candle.style.opacity = '0.5';
+                    candle.style.cursor = 'not-allowed';
+                }
+            });
+            
+            // Afficher le message de résultat
+            setTimeout(function() {
+                document.getElementById('discoveredLetter').textContent = randomLetter;
+                document.getElementById('resultMessage').style.display = 'block';
+                createConfetti();
+            }, 1000);
+        }
+
+        function createParticles(candleElement) {
+            const rect = candleElement.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = centerX + (Math.random() - 0.5) * 40 + 'px';
+                particle.style.top = centerY + 'px';
+                particle.style.animationDelay = Math.random() * 0.5 + 's';
+                
+                document.body.appendChild(particle);
+                
+                setTimeout(() => {
+                    particle.remove();
+                }, 3000);
+            }
+        }
+
+        function createConfetti() {
+            const colors = ['#d4af37', '#ffd700', '#ff6b9d', '#9b59b6', '#3498db', '#f39c12'];
+            
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.width = Math.random() * 10 + 5 + 'px';
+                confetti.style.height = Math.random() * 10 + 5 + 'px';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDuration = Math.random() * 3 + 2 + 's';
+                
+                document.body.appendChild(confetti);
+                
+                setTimeout(() => {
+                    confetti.remove();
+                }, 5000);
+            }
+        }
+    </script>
+</body>
+</html>
